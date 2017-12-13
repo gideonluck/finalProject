@@ -8,3 +8,4 @@ Pretty basic, but I've been instructed to make it "Flashy".
 Add a history page
 
 Add an undo button, to return to values of previous calculations.
+
