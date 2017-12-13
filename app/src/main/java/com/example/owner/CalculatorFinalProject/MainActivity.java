@@ -228,6 +228,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    
+
     private void computeCalculation() {
         if(!Double.isNaN(valueOne) & !Double.isNaN(valueTwo)) {
             valueTwo = Double.parseDouble(binding.editText.getText().toString());
