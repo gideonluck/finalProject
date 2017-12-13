@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.example.owner.finalproject.databinding.ActivityMainBinding;
 
 import java.text.DecimalFormat;
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private DecimalFormat decimalFormat;
 
     Deque<String> stack = new ArrayDeque<>();
-    Deque<Double> stack2 = new ArrayDeque<Double>();
+    Deque<Double> stack2 = new ArrayDeque<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -204,10 +206,26 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
         binding.buttonHist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, HistoryActivity.class));
+                Intent intentBundle = new Intent(MainActivity.this, HistoryActivity.class);
+                Bundle bundle = new Bundle();
+
+                Deque<String> stack3 = new ArrayDeque<>();
+                stack3.addAll(stack);
+
+                String passStuff = "";
+
+                while(!stack3.isEmpty()){
+                    passStuff = passStuff + stack3.pop() + "\n";
+                }
+
+                intentBundle.putExtra("histList", passStuff);
+
+                intentBundle.putExtras(bundle);
+                startActivity(intentBundle);
             }
         });
     }
