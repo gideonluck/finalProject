@@ -8,6 +8,8 @@ import android.view.View;
 import com.example.owner.finalproject.databinding.ActivityMainBinding;
 
 import java.text.DecimalFormat;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,11 +27,16 @@ public class MainActivity extends AppCompatActivity {
 
     private DecimalFormat decimalFormat;
 
+    Deque<Double> stack = new ArrayDeque<Double>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         decimalFormat = new DecimalFormat("#.##########");
+
+        final Deque<Double> stack = new ArrayDeque<Double>();
+
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
@@ -176,6 +183,23 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        binding.buttonUndo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!stack.isEmpty()) {
+                    String currentText = Double.toString(stack.pop());
+                    binding.editText.setText(currentText);
+
+                }
+                else {
+                    valueOne = Double.NaN;
+                    valueTwo = Double.NaN;
+                    binding.editText.setText("");
+                    binding.infoTextView.setText("");
+                }
+            }
+        });
     }
 
     private void computeCalculation() {
@@ -191,6 +215,8 @@ public class MainActivity extends AppCompatActivity {
                 valueOne = this.valueOne * valueTwo;
             else if(CURRENT_ACTION == DIVISION)
                 valueOne = this.valueOne / valueTwo;
+
+            stack.push(valueOne);
         }
         else {
             try {
