@@ -27,15 +27,13 @@ public class MainActivity extends AppCompatActivity {
 
     private DecimalFormat decimalFormat;
 
-    Deque<Double> stack = new ArrayDeque<Double>();
+    Deque<String> stack = new ArrayDeque<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         decimalFormat = new DecimalFormat("#.##########");
-
-        final Deque<Double> stack = new ArrayDeque<Double>();
 
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
@@ -188,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(!stack.isEmpty()) {
-                    String currentText = Double.toString(stack.removeFirst());
+                    String currentText = stack.removeFirst();
                     binding.editText.setText(currentText);
 
                 }
@@ -201,8 +199,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-    
 
     private void computeCalculation() {
         if(!Double.isNaN(valueOne)) {
@@ -218,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
             else if(CURRENT_ACTION == DIVISION)
                 valueOne = this.valueOne / valueTwo;
 
-            stack.addFirst(valueOne);
+            stack.addFirst(Double.toString(valueOne));
         }
         else {
             try {
