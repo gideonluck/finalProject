@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private DecimalFormat decimalFormat;
 
     Deque<String> stack = new ArrayDeque<>();
+    Deque<Double> stack2 = new ArrayDeque<Double>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -188,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
                 if(!stack.isEmpty()) {
                     String currentText = stack.removeFirst();
                     binding.editText.setText(currentText);
-
+                    valueOne = stack2.removeFirst();
                 }
                 else {
                     valueOne = Double.NaN;
@@ -215,6 +216,7 @@ public class MainActivity extends AppCompatActivity {
                 valueOne = this.valueOne / valueTwo;
 
             stack.addFirst(Double.toString(valueOne));
+            stack2.addFirst(valueOne);
         }
         else {
             try {
