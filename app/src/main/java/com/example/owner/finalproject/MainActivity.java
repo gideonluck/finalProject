@@ -1,5 +1,6 @@
 package com.example.owner.finalproject;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -162,6 +163,12 @@ public class MainActivity extends AppCompatActivity {
                 computeCalculation();
                 binding.infoTextView.setText(binding.infoTextView.getText().toString() +
                         decimalFormat.format(valueTwo) + " = " + decimalFormat.format(valueOne));
+
+//                Below is my attempt at making valueOne hold previous values if you just press a key.
+//                So far it doesn't work
+//                double val = stack2.removeFirst();
+//                stack2.push(val);
+//                valueOne = val;
                 valueOne = Double.NaN;
                 CURRENT_ACTION = '0';
             }
@@ -192,11 +199,15 @@ public class MainActivity extends AppCompatActivity {
                     valueOne = stack2.removeFirst();
                 }
                 else {
-                    valueOne = Double.NaN;
-                    valueTwo = Double.NaN;
                     binding.editText.setText("");
                     binding.infoTextView.setText("");
                 }
+            }
+        });
+        binding.buttonHist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, HistoryActivity.class));
             }
         });
     }
