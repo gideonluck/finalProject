@@ -1,4 +1,4 @@
-package com.example.owner.finalproject;
+package com.example.owner.CalculatorFinalProject;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

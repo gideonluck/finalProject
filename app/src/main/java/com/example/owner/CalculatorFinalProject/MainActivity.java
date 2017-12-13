@@ -1,17 +1,15 @@
-package com.example.owner.finalproject;
+package com.example.owner.CalculatorFinalProject;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import com.example.owner.finalproject.databinding.ActivityMainBinding;
+import com.example.owner.CalculatorFinalProject.databinding.ActivityMainBinding;
 
 import java.text.DecimalFormat;
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Deque;
 
 public class MainActivity extends AppCompatActivity {
@@ -231,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void computeCalculation() {
-        if(!Double.isNaN(valueOne)) {
+        if(!Double.isNaN(valueOne) & !Double.isNaN(valueTwo)) {
             valueTwo = Double.parseDouble(binding.editText.getText().toString());
             binding.editText.setText(null);
 

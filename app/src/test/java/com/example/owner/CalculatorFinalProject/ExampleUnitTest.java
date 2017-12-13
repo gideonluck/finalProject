@@ -1,4 +1,4 @@
-package com.example.owner.finalproject;
+package com.example.owner.CalculatorFinalProject;
 
 import org.junit.Test;
 

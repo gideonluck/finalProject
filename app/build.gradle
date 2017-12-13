@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     dataBinding.enabled = true
     defaultConfig {
-        applicationId "com.example.owner.finalproject"
+        applicationId "com.example.owner.CalculatorFinalProject"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
