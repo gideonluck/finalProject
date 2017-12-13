@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(!stack.isEmpty()) {
-                    String currentText = Double.toString(stack.pop());
+                    String currentText = Double.toString(stack.removeFirst());
                     binding.editText.setText(currentText);
 
                 }
@@ -216,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
             else if(CURRENT_ACTION == DIVISION)
                 valueOne = this.valueOne / valueTwo;
 
-            stack.push(valueOne);
+            stack.addFirst(valueOne);
         }
         else {
             try {
