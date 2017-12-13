@@ -17,7 +17,7 @@ public class HistoryActivity extends AppCompatActivity {
         String printStuff = b.getString("histList");
 
         TextView tv = (TextView)findViewById(R.id.textView1);
-        
+
         tv.setText(printStuff);
 
     }
