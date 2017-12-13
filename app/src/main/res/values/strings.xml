@@ -2,5 +2,4 @@
     <string name="app_name">My Calculator</string>
     <string name="title_home">Calculate</string>
     <string name="title_history">History</string>
-    <!--<string name="title_notifications">Third tab</string>-->
 </resources>
